@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 import "./globals.css";
-import ThemeProvider from "@/context/Theme";
-import { Toaster } from "@/components/ui/toaster";
-import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { Toaster } from "@/components/ui/toaster";
+import ThemeProvider from "@/context/Theme";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -34,6 +34,13 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <SessionProvider session={session}>
         <body
           className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
