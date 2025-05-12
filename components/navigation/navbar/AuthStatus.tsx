@@ -2,6 +2,7 @@ import { auth, signOut } from "@/auth";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
+import Image from "next/image";
 
 export default async function AuthActions() {
   const session = await auth();
@@ -16,9 +17,10 @@ export default async function AuthActions() {
       >
         <Button
           type="submit"
-          className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none"
+          className="flex items-center justify-start gap-4 bg-transparent p-4"
         >
-          Sign Out
+          <Image src="/icons/Vector.png" width={24} height={24} alt="SignOut" />
+          <p className="text-dark300_light900 base-bold">Logout</p>
         </Button>
       </form>
     );
